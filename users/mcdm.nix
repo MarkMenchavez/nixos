@@ -22,6 +22,10 @@
             asciiquarium-transparent
             fancy-motd
 
+            htop
+            gping
+            speedtest-cli
+            
             imv
             mpv
             yazi

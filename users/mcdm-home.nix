@@ -6,7 +6,7 @@
 
     home.stateVersion = "26.05";
 
-    home.file.".face".source = ./assets/face.png;
+    home.file.".face".source = ../assets/mcdm.png;
 
     programs.home-manager.enable = true;
 

@@ -12,5 +12,7 @@
         ripgrep
         tree
         eza
+        ncdu
+        file
     ];
 }

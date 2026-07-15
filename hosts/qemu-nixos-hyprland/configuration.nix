@@ -12,7 +12,7 @@
       ../../modules/development
 
       ../../modules/desktop/greetd.nix
-      .,/../modules/desktop/hyprland.nix
+      ../../modules/desktop/hyprland.nix
 
       ../../users/mcdm.nix
     ];

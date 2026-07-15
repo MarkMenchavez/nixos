@@ -24,7 +24,7 @@
                         home-manager.useUserPackages = true;
                         home-manager.users.mcdm =
                             import ./users/mcdm-home.nix;
-                    }
+                    };
                 ];
             };
     };

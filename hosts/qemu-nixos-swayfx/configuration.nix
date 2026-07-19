@@ -10,10 +10,10 @@
       ../../modules/virtualization/qemu.nix
 
       ../../modules/desktop/greetd.nix
-      ../../modules/desktop/hyprland.nix
+      ../../modules/desktop/swayfx.nix
     ];
 
-  networking.hostName = "qemu-nixos-hyprland";
+  networking.hostName = "qemu-nixos-swayfx";
  
   system.stateVersion = "26.05";
 }

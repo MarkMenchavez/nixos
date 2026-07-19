@@ -11,21 +11,32 @@
     };
 
     outputs = { self, nixpkgs, home-manager, ... }:
-    {
+    let mkHomeManager = homeFile: [
+        home-manager.nixosModules.home-manager
+        {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.mcdm = import homeFile;
+        }
+    ];
+    in {
+
         nixosConfigurations.qemu-nixos-hyprland =
             nixpkgs.lib.nixosSystem {
                 system = "aarch64-linux";
 
-                modules = [
-                    ./hosts/qemu-nixos-hyprland/configuration.nix
+                modules = 
+                    [ ./hosts/qemu-nixos-hyprland/configuration.nix ]
+                    ++ mkHomeManager ./users/mcdm-home-hyprland.nix;
+        };
 
-                    home-manager.nixosModules.home-manager {
-                        home-manager.useGlobalPkgs = true;
-                        home-manager.useUserPackages = true;
-                        home-manager.users.mcdm =
-                            import ./users/mcdm-home.nix;
-                    }
-                ];
-            };
-    };
+        nixosConfigurations.qemu-nixos-swayfx =
+            nixpkgs.lib.nixosSystem {
+                system = "aarch64-linux";
+
+                modules = 
+                    [ ./hosts/qemu-nixos-swayfx/configuration.nix ]
+                    ++ mkHomeManager ./users/mcdm-home-swayfx.nix;
+        };
+    }
 }

@@ -8,20 +8,27 @@
         ./fonts.nix
     ];
 
-    programs.hyprland = {
+    programs.sway = {
         enable = true;
+        package = pkgs.swayfx;
+        wrapperFeatures.gtk = true;
         xwayland.enable = true;
     };
 
     xdg.portal = {
+        enable = true;
+
         extraPortals = with pkgs; [
-            xdg-desktop-portal-hyprland
+            xdg-desktop-portal-wlr
             xdg-desktop-portal-gtk
         ];
 
         config = {
             common = {
-                default = [ "hyprland" "gtk" ];
+                default = [
+                    "wlr"
+                    "gtk"
+                ];
             };
         };
     };
@@ -34,10 +41,11 @@
         WLR_NO_HARDWARE_CURSORS = "1";
     };
 
+
     environment.systemPackages = with pkgs; [
         foot
-        alacritty     
-                
+        alacritty        
+
         quickshell
         noctalia-qs
         noctalia-shell
@@ -45,23 +53,13 @@
         widevine-cdm
         libnotify
 
-        brightnessctl
-        playerctl
+        #swaybg
+        #swaylock
+        #swayidle
 
         wl-clipboard
         grim
         slurp
-
         #waybar
-        #hyprpaper
-        #hypridle
-        #hyprlock
-
-        hyprlauncher
-        hyprsysteminfo
-        hyprpwcenter
-
-        hyprpolkitagent
-        hyprshutdown
     ];
 }

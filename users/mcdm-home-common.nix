@@ -7,14 +7,9 @@
     home.stateVersion = "26.05";
 
     home.file.".face".source = ../assets/mcdm.png;
+    systemd.user.startServices = "sd-switch";
 
     programs.home-manager.enable = true;
-    systemd.user.startServices = "sd-switch";
-    wayland.windowManager.hyprland = {
-        enable = true;
-        systemd.enable = true;
-    };
-    xdg.configFile."hypr/hyprland.lua".source = ./hyprland.lua;
 
     programs.foot = {
         enable = true;
@@ -67,4 +62,5 @@
             };
         };
     };    
+
 }

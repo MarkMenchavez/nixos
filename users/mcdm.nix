@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     users.users.mcdm = {
@@ -9,6 +9,7 @@
             "networkmanager"
             "video"
             "input"
+            "render"
         ];
         shell = pkgs.bash;
 

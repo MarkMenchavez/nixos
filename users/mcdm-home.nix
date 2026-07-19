@@ -9,6 +9,8 @@
     home.file.".face".source = ../assets/mcdm.png;
 
     programs.home-manager.enable = true;
+    wayland.windowManager.hyprland.enable = true;
+    xdg.configFile."hypr/hyprland.lua".source = ./hyprland.lua;
 
     programs.foot = {
         enable = true;
@@ -54,6 +56,10 @@
                     family = "JetBrainsMono Nerd Font";
                     style = "Regular";
                 };
+            };
+
+	    debug = {
+                renderer = "gles2pure";
             };
         };
     };    

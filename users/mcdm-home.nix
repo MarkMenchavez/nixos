@@ -9,7 +9,11 @@
     home.file.".face".source = ../assets/mcdm.png;
 
     programs.home-manager.enable = true;
-    wayland.windowManager.hyprland.enable = true;
+    systemd.user.startServices = "sd-switch";
+    wayland.windowManager.hyprland = {
+        enable = true;
+        systemd.enable = true;
+    };
     xdg.configFile."hypr/hyprland.lua".source = ./hyprland.lua;
 
     programs.foot = {

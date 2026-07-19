@@ -14,5 +14,6 @@
         eza
         ncdu
         file
+        trash-cli
     ];
 }

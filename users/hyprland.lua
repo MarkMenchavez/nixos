@@ -56,7 +56,7 @@ local menu            = "hyprlauncher"
 hl.on("hyprland.start", function () 
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
   hl.exec_cmd("noctalia-shell")
-  --hl.exec_cmd("foot --server")
+  hl.exec_cmd("foot --server")
 end)
 
 

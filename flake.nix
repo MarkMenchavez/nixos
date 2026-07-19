@@ -38,5 +38,5 @@
                     [ ./hosts/qemu-nixos-swayfx/configuration.nix ]
                     ++ mkHomeManager ./users/mcdm-home-swayfx.nix;
         };
-    }
+    };
 }

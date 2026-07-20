@@ -55,7 +55,7 @@
 
         #swaybg
         #swaylock
-        #swayidle
+        swayidle
 
         wl-clipboard
         grim

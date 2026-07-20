@@ -9,4 +9,6 @@
 
       ../../users/mcdm.nix
     ];
+  
+  services.openssh.enable = true;
 }

@@ -5,9 +5,16 @@
         ./mcdm-home-common.nix
     ];
 
-	home.packages = [
-		pkgs.widevine-cdm
-		pkgs.brave
+	home.packages = with pkgs; [
+		foot
+		alacritty
+		
+		noctalia-shell
+
+		widevine-cdm
+		brave
+
+		vscode-fhs
 	];
 
 	home.file.".config/BraveSoftware/Brave-Browser/WidevineCdm/latest-component-updated-widevine-cdm".text =
@@ -22,9 +29,14 @@
 		config = {
 			modifier = "Mod4";
 
+			terminal = "footclient";
+
 			keybindings = lib.mkOptionDefault {
 				"Mod4+shift+b"      = "exec ${pkgs.brave}/bin/brave --incognito";
-				"Mod4+shift+return" = ''exec noctalia-shell ipc call launcher toggle'';
+				"Mod4+shift+t"      = "exec ${pkgs.alacritty}/bin/alacritty";
+				"Mod4+shift+i"      = "exec ${pkgs.vscode}/bin/code";
+
+				"Mod4+space"        = ''exec noctalia-shell ipc call launcher toggle'';
 				"Mod4+comma"        = ''exec noctalia-shell ipc call settings toggle'';
 				"Mod4+period"       = ''exec noctalia-shell ipc call controlCenter toggle'';
 				"Mod4+shift+r"      = ''exec noctalia-shell ipc call wallpaper random all'';
@@ -47,6 +59,7 @@
 			};
 
 			startup = [
+				{ command = "foot --server"; }
 				{ command = "noctalia-shell"; }
 			];
 		};

@@ -31,8 +31,8 @@
             mpv
             yazi
 
-            brave
-            vscode-fhs
+            #brave
+            #vscode-fhs
         ];
     };
 }

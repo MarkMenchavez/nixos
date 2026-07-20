@@ -8,6 +8,8 @@
         ./fonts.nix
     ];
 
+    security.pam.services.sway.enableGnomeKeyring = true;
+
     programs.sway = {
         enable = true;
         package = pkgs.swayfx;
@@ -43,15 +45,15 @@
 
 
     environment.systemPackages = with pkgs; [
-        foot
-        alacritty        
+        #foot
+        #alacritty        
 
-        quickshell
-        noctalia-qs
-        noctalia-shell
+        #quickshell
+        #noctalia-qs
+        #noctalia-shell
 
-        widevine-cdm
-        libnotify
+        #widevine-cdm
+        #libnotify
 
         #swaybg
         #swaylock

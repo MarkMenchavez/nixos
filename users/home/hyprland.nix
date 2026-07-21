@@ -8,6 +8,8 @@
 	home.packages = with pkgs; [
         noctalia-shell
 
+        vscode-fhs
+        
         brightnessctl
         playerctl
 

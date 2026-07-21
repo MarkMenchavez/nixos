@@ -12,7 +12,7 @@
 
     home.stateVersion = "26.05";
 
-    home.file.".face".source = ../assets/mcdm.png;
+    home.file.".face".source = ../../assets/mcdm.png;
     systemd.user.startServices = "sd-switch";
 
     programs.home-manager.enable = true;

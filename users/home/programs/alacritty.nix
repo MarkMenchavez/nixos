@@ -25,6 +25,7 @@
                 };
             };
 
+        # Workaround for rendering issues
 	    debug = {
                 renderer = "gles2pure";
             };

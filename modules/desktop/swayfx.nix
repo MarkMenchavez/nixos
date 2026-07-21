@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
     imports = [
@@ -27,7 +27,7 @@
 
         config = {
             sway = {
-                default = [
+                default = lib.mkForce [
                     "wlr"
                     "gtk"
                 ];

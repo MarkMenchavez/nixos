@@ -6,19 +6,9 @@
     ];
 
 	home.packages = with pkgs; [
-		#foot
-		#alacritty
-
-		#quickshell
-		#noctalia-qs
 		noctalia-shell
 
-		#widevine-cdm
-		#brave
-
 		vscode-fhs
-
-        #libnotify
 
         #swaybg
         #swaylock
@@ -29,9 +19,6 @@
         slurp
         #waybar		
 	];
-
-	#home.file.".config/BraveSoftware/Brave-Browser/WidevineCdm/latest-component-updated-widevine-cdm".text =
-	#	builtins.toJSON { Path = "${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm"; };
 
     wayland.windowManager.sway = {
         enable = true;
@@ -73,7 +60,8 @@
 			};
 
 			startup = [
-				{ command = "foot --server"; }
+				# Foot server is already enabled via programs.foot.server.enable = true
+				#{ command = "foot --server"; }
 				{ command = "noctalia-shell"; }
 			];
 		};

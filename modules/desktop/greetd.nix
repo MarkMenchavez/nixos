@@ -6,14 +6,15 @@
         settings = {
             default_session = {
                 user = "greeter";
-                command = ''${pkgs.tuigreet}/bin/tuigreet
-                            --time
-                            --remember
-                            --remember-user-session
-                            --user-menu
-                            --asterisks
-                            --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions
-                          '';
+                command = ''
+                    ${pkgs.lib.getExe pkgs.tuigreet} \
+                    --time \
+                    --remember \
+                    --remember-user-session \
+                    --user-menu \
+                    --asterisks \
+                    --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions
+                '';
             };
         };
     };

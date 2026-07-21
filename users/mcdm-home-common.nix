@@ -11,6 +11,25 @@
 
     programs.home-manager.enable = true;
 
+    home.packages = with pkgs; [
+        fastfetch
+
+        cowsay
+        lolcat
+        fortune
+        cmatrix
+        asciiquarium-transparent
+        fancy-motd
+
+        htop
+        gping
+        speedtest-cli
+            
+        imv
+        mpv
+        yazi
+    ];
+
     programs.foot = {
         enable = true;
         server.enable = true;

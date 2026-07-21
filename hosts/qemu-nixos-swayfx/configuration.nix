@@ -2,13 +2,17 @@
 
 {
   imports =
-    [ 
-      ../common/configuration.nix
+    [
+      # Base configuration
+      ../common
 
+      # Machine-specific
       ./hardware-configuration.nix
 
+      # virtualization
       ../../modules/virtualization/qemu.nix
 
+      # Desktop
       ../../modules/desktop/greetd.nix
       ../../modules/desktop/swayfx.nix
     ];

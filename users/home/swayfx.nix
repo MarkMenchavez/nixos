@@ -2,23 +2,36 @@
 
 {
     imports = [
-        ./mcdm-home-common.nix
+        ./common.nix
     ];
 
 	home.packages = with pkgs; [
-		foot
-		alacritty
-		
+		#foot
+		#alacritty
+
+		#quickshell
+		#noctalia-qs
 		noctalia-shell
 
-		widevine-cdm
-		brave
+		#widevine-cdm
+		#brave
 
 		vscode-fhs
+
+        #libnotify
+
+        #swaybg
+        #swaylock
+        swayidle
+
+        wl-clipboard
+        grim
+        slurp
+        #waybar		
 	];
 
-	home.file.".config/BraveSoftware/Brave-Browser/WidevineCdm/latest-component-updated-widevine-cdm".text =
-		builtins.toJSON { Path = "${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm"; };
+	#home.file.".config/BraveSoftware/Brave-Browser/WidevineCdm/latest-component-updated-widevine-cdm".text =
+	#	builtins.toJSON { Path = "${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm"; };
 
     wayland.windowManager.sway = {
         enable = true;
@@ -52,6 +65,7 @@
 			bars = [ ];
 
 	        output = {
+				# QEMU defaults to a low resolution unless explicitly configured.
 				"Virtual-1" = {
 					mode = "2048x1152@60Hz";
                 	pos  = "0 0";

@@ -9,5 +9,6 @@
         ./storage.nix
         ./polkit.nix
         ./power.nix
+        ./performance.nix
     ];
 }

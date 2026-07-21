@@ -10,33 +10,49 @@
         };
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }:
-    let mkHomeManager = homeFile: [
-        home-manager.nixosModules.home-manager
-        {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.mcdm = import homeFile;
-        }
-    ];
-    in {
+    outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+    let
+        lib = nixpkgs.lib;
 
-        nixosConfigurations.qemu-nixos-hyprland =
-            nixpkgs.lib.nixosSystem {
-                system = "aarch64-linux";
+        username = "mcdm";
+        system = "aarch64-linux";
 
-                modules = 
-                    [ ./hosts/qemu-nixos-hyprland/configuration.nix ]
-                    ++ mkHomeManager ./users/mcdm-home-hyprland.nix;
-        };
+        mkHomeModules = homeFile: [
+            home-manager.nixosModules.home-manager
+            {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
 
-        nixosConfigurations.qemu-nixos-swayfx =
-            nixpkgs.lib.nixosSystem {
-                system = "aarch64-linux";
+                home-manager.users.${username} = import homeFile;
+            }
+        ];
 
-                modules = 
-                    [ ./hosts/qemu-nixos-swayfx/configuration.nix ]
-                    ++ mkHomeManager ./users/mcdm-home-swayfx.nix;
+        mkHost = { configuration, home }:
+            lib.nixosSystem {
+                inherit system;
+
+                specialArgs = {
+                    inherit 
+                        self
+                        inputs
+                        username;
+                };
+
+                modules = [ configuration ]
+                    ++ mkHomeModules home;
+            };
+    in 
+    {
+        nixosConfigurations = {
+            qemu-nixos-hyprland = mkHost {
+                configuration = ./hosts/qemu-nixos-hyprland/configuration.nix;
+                home = ./users/mcdm-home-hyprland.nix;
+            };
+
+            qemu-nixos-swayfx = mkHost {
+                configuration = ./hosts/qemu-nixos-swayfx/configuration.nix;
+                home = ./users/home/swayfx.nix;
+            };
         };
     };
 }

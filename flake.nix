@@ -46,7 +46,7 @@
         nixosConfigurations = {
             qemu-nixos-hyprland = mkHost {
                 configuration = ./hosts/qemu-nixos-hyprland/configuration.nix;
-                home = ./users/mcdm-home-hyprland.nix;
+                home = ./users/home/hyprland.nix;
             };
 
             qemu-nixos-swayfx = mkHost {

@@ -33,7 +33,13 @@
             
         imv
         mpv
+        
         yazi
+        ffmpegthumbnailer
+        imagemagick
+        poppler
+        chafa
+        ueberzugpp
     ];
 
     gtk = {

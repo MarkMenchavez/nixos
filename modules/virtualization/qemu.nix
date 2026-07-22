@@ -5,7 +5,7 @@
     services.spice-vdagentd.enable = true;
 
     boot.kernelParams = [
-        "video=Virtual-1:2048x1152@60"
+        "video=Virtual-1:2560x1440@75"
     ];
 
     environment.sessionVariables = {

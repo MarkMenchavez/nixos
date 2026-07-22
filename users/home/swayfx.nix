@@ -22,6 +22,15 @@
 		brightnessctl
 	];
 
+	home.activation.noctaliaSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+		mkdir -p $HOME/.config/noctalia
+
+		if [ ! -e $HOME/.config/noctalia/settings.json ]; then
+			cp ${./noctalia/settings.json} \
+			$HOME/.config/noctalia/settings.json
+		fi
+	'';
+
     wayland.windowManager.sway = {
         enable = true;
 		package = pkgs.swayfx;

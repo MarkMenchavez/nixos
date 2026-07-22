@@ -8,16 +8,18 @@
 	home.packages = with pkgs; [
 		noctalia-shell
 
+		resources
+
 		vscode-fhs
 
-        #swaybg
-        #swaylock
-        swayidle
-
         wl-clipboard
+		cliphist
+
         grim
         slurp
-        #waybar		
+
+		pavucontrol
+		brightnessctl
 	];
 
     wayland.windowManager.sway = {
@@ -32,8 +34,10 @@
 			terminal = "footclient";
 
 			keybindings = lib.mkOptionDefault {
-				"Mod4+shift+b"      = "exec ${pkgs.brave}/bin/brave --incognito";
+				"Mod4+shift+b"      = "exec ${pkgs.brave}/bin/brave";
+				"Mod4+Mod1+b"       = "exec ${pkgs.brave}/bin/brave --incognito";
 				"Mod4+shift+t"      = "exec ${pkgs.alacritty}/bin/alacritty";
+				"Mod4+shift+f" 		= "exec ${pkgs.alacritty}/bin/alacritty -e ${pkgs.yazi}/bin/yazi";
 				"Mod4+shift+i"      = "exec ${pkgs.vscode}/bin/code";
 
 				"Mod4+space"        = ''exec noctalia-shell ipc call launcher toggle'';
@@ -54,7 +58,7 @@
 	        output = {
 				# QEMU defaults to a low resolution unless explicitly configured.
 				"Virtual-1" = {
-					mode = "2048x1152@60Hz";
+					mode = "2560x1440@75Hz";
                 	pos  = "0 0";
 				};
 			};

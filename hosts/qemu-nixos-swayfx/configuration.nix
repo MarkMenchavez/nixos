@@ -9,7 +9,7 @@
       # Machine-specific
       ./hardware-configuration.nix
 
-      # virtualization
+      # Virtualization
       ../../modules/virtualization/qemu.nix
 
       # Desktop

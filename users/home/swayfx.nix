@@ -77,6 +77,8 @@
 				#{ command = "foot --server"; }
 				{ command = "noctalia-shell"; }
 			];
+
+			defaultWorkspace = "workspace number 1";
 		};
 	
 		extraConfig = ''

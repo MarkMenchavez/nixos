@@ -4,6 +4,8 @@
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
+        nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
         home-manager = {
             url = "github:nix-community/home-manager/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -17,6 +19,11 @@
         username = "mcdm";
         system = "aarch64-linux";
 
+        pkgs-unstable = import inputs.nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+        };
+
         mkHomeModules = homeFile: [
             home-manager.nixosModules.home-manager
             {
@@ -24,6 +31,14 @@
                 home-manager.useUserPackages = true;
                 home-manager.backupFileExtension = "backup";
                 home-manager.overwriteBackup = true;
+
+                home-manager.extraSpecialArgs = {
+                    inherit
+                        self
+                        inputs
+                        username
+                        pkgs-unstable;
+                };
 
                 home-manager.users.${username} = import homeFile;
             }
@@ -37,7 +52,8 @@
                     inherit 
                         self
                         inputs
-                        username;
+                        username
+                        pkgs-unstable;
                 };
 
                 modules = [ configuration ]

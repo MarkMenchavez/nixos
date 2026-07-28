@@ -10,8 +10,6 @@
 
 		resources
 
-		vscode-fhs
-
         wl-clipboard
 		cliphist
 

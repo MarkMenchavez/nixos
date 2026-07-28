@@ -5,6 +5,7 @@
         ./programs/foot.nix
         ./programs/alacritty.nix
         ./programs/brave.nix
+        ./programs/vscode.nix
     ];
 
     home.username = "mcdm";

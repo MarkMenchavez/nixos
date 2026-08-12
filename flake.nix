@@ -71,6 +71,12 @@
                 configuration = ./hosts/qemu-nixos-swayfx/configuration.nix;
                 home = ./users/home/swayfx.nix;
             };
+
++           vmware-nixos-swayfx = mkHost {
++               configuration = ./hosts/vmware-nixos-swayfx/configuration.nix;
++               home = ./users/home/swayfx.nix; # Reusing user profile for consistency in this transition
++           };
         };
     };
 }
+
